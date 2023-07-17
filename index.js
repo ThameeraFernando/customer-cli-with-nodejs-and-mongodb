@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Customer = require("./modals/customer");
+const dotenv = require("dotenv");
 
 //Map global promise - get rid of warnings
 mongoose.Promise = global.Promise;
 
+dotenv.config();
+
 //Connect to DB
-const db = mongoose.connect("mongodb://localhost:27017/customercli", {
+const db = mongoose.connect(process.env.MONGO_URL, {
   useMongoClient: true,
 });
 
